@@ -1,0 +1,270 @@
+﻿@model Provider
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <style>
+        .error-message {
+            color: #ff0000; /* Red color for error messages */
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ServiceProvider</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/ServiceProvider.styles.css" asp-append-version="true" /> *@
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <link href="~/Customer/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Customer/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/Customer/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Customer/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/Customer/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
+        <div class="container quote px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div style="width:80%;" class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 pe-lg-0">
+                        <div class="section-title text-start">
+                            <h1 class="display-5 mb-4">Free Quote</h1>
+                        </div>
+                        <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <form asp-action="AddProvider" asp-controller="Login" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Name" type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;" id="Name">
+                                    <span id="nameError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Email" type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;" id="Email">
+                                    <span id="emailError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Phone" type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;" id="Phone">
+                                    <span id="phoneError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Position" type="text" class="form-control border-0" placeholder="Your Position" style="height: 55px;" id="Position">
+                                    <span id="positionError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Password" type="text" class="form-control border-0" placeholder="Your Password" style="height: 55px;" id="Password">
+                                    <span id="passwordError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="ImageFile" type="file" class="form-control border-0" placeholder="Your Photo" style="height: 55px;" id="Imagefile">
+                                    <span id="imageError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input asp-for="Location" type="url" class="form-control border-0" placeholder="Your Photo" style="height: 55px;" id="Location">
+                                    <span id="locationError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select asp-for="City" class="form-select border-0" style="height: 55px;">
+                                        <option value="">Select A City</option>
+                                    </select>
+                                    <span id="cityError" class="error-message"></span>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    @if (ViewBag.Items != null)
+                                    {
+                                        <select asp-for="serviceID" class="form-select border-0" style="height: 55px;" asp-items="@(new SelectList(ViewBag.Items, "ID", "Name"))" id="Service"></select>
+                                        <span id="serviceError" class="error-message"></span>
+                                    }
+                                    else
+                                    {
+                                        <p>No departments available.</p>
+                                    }
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                </div>
+                                <div class="text-danger">
+                                    @Html.ValidationMessage("InvalidUser")
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quote End -->
+    <script>
+
+        var cities = ["Irbid", "Amman", "Jerash", "Madaba"];
+        var citySelect = document.getElementById('City');
+
+        cities.forEach(function (city) {
+            var option = document.createElement('option');
+            option.value = city;
+            option.text = city;
+            citySelect.add(option);
+        });
+
+        function validateForm() {
+            var name = document.getElementById("Name").value;
+            var email = document.getElementById("Email").value;
+            var password = document.getElementById("Password").value;
+            var phoneNumber = document.getElementById("Phone").value;
+            var locationUrl = document.getElementById("Location").value;
+            var position = document.getElementById("Position").value;
+            var service = document.getElementById("Service").value;
+            var Imagefile = document.getElementById("Imagefile").value;
+            var city = document.getElementById("City").value;
+
+            var nameError = document.getElementById("nameError");
+            var emailError = document.getElementById("emailError");
+            var passwordError = document.getElementById("passwordError");
+            var phoneError = document.getElementById("phoneError");
+            var locationError = document.getElementById("locationError");
+            var positionError = document.getElementById("positionError");
+            var serviceError = document.getElementById("serviceError");
+            var imageError = document.getElementById("imageError");
+            var cityError = document.getElementById("cityError");
+
+            // Reset previous errors
+            nameError.innerHTML = "";
+            emailError.innerHTML = "";
+            passwordError.innerHTML = "";
+            phoneError.innerHTML = "";
+            locationError.innerHTML = "";
+            positionError.innerHTML = "";
+            serviceError.innerHTML = "";
+            imageError.innerHTML = "";
+            cityError.innerHTML = "";
+
+
+            var isValid = true;
+
+            // Validate Name
+            if (name.trim() === "") {
+                nameError.innerHTML = "Name is required";
+                isValid = false;
+            }
+
+            if (city.trim() === "") {
+                cityError.innerHTML = "City is required";
+                isValid = false;
+            }
+
+            //validate img
+            if (Imagefile.trim() === "") {
+                imageError.innerHTML = "Image is required";
+                isValid = false;
+            }
+
+            //validate service
+            if (service.trim() === "") {
+                serviceError.innerHTML = "Service is required";
+                isValid = false;
+            }
+
+
+            // validate Position
+            if (position.trim() === "") {
+                positionError.innerHTML = "Position is required";
+                isValid = false;
+            }
+            // Validate Email
+            if (!isValidEmail(email)) {
+                emailError.innerHTML = "Invalid email address";
+                isValid = false;
+            }
+
+            // Validate Phone Number
+            if (phoneNumber.trim() === "") {
+                phoneError.innerHTML = "Phone number is required";
+                isValid = false;
+            } else if (!isValidPhoneNumber(phoneNumber)) {
+                phoneError.innerHTML = 'Invalid phone number format (e.g., 1234567890)';
+                isValid = false;
+            }
+
+            // Validate Location URL
+            if (locationUrl.trim() === "") {
+                locationError.innerHTML = "Location URL is required";
+                isValid = false;
+            } else if (!isValidUrl(locationUrl)) {
+                locationError.innerHTML = 'Invalid URL format';
+                isValid = false;
+            }
+
+            // Validate Password
+            if (password.length < 8) {
+                passwordError.innerHTML = "Password must be at least 8 characters long";
+                isValid = false;
+            } else if (!containsUpperCase(password)) {
+                passwordError.innerHTML = "Password must contain at least one uppercase letter";
+                isValid = false;
+            } else if (!containsLowerCase(password)) {
+                passwordError.innerHTML = "Password must contain at least one lowercase letter";
+                isValid = false;
+            } else if (!containsDigit(password)) {
+                passwordError.innerHTML = "Password must contain at least one digit";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            // Regular expression for a valid email address
+            var emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function containsUpperCase(str) {
+            return /[A-Z]/.test(str);
+        }
+
+        function containsLowerCase(str) {
+            return /[a-z]/.test(str);
+        }
+
+        function containsDigit(str) {
+            return /\d/.test(str);
+        }
+
+        function isValidUrl(url) {
+            var urlRegex = /^(http|https):\/\/[^ "]+$/;
+            return urlRegex.test(url);
+        }
+
+        function isValidPhoneNumber(phoneValue) {
+            var phoneRegex = /^[0-9]{10}$/;
+            return phoneRegex.test(phoneValue)
+        }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+﻿@model Provider
+
+
+<header>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .form-group {
+            margin: 5px;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</header>
+
+
+<div class="container">
+    <form class="col" asp-action="ProviderProfile" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="e-profile">
+                            <div class="row">
+                                <div class="col-12 col-sm-auto mb-3">
+                                    <div class="mx-auto" style="width: 140px;">
+                                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                            <img style=" width:100% ; height:100%;" src="@((Model.ImageUrl != null) ? Url.Content(Model.ImageUrl) : "")" />
+                                            <input asp-for="ImageUrl" hidden />
+                                            <input asp-for="ID" hidden />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">@Model.Name</h4>
+                                        <p class="mb-0">@Model.Email</p>
+                                        <div class="mt-2">
+                                            <label class="btn btn-primary">
+                                                <i class="fa fa-fw fa-camera"></i>
+                                                Change Photo
+                                                <input asp-for="ImageFile" type="file" class="form-control shadow-sm" id="exampleInput" placeholder="Enter something..." style="display: none;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                            </ul>
+                            <div class="tab-content pt-3">
+                                <div class="tab-pane active">
+                                    <div class="form" novalidate="">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Full Name</label>
+                                                            <input asp-for="Name" class="form-control" type="text" name="name" placeholder="John Smith" id="Name">
+                                                            <span id="nameError" class="error-message"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input asp-for="Email" class="form-control" type="email" placeholder="user@example.com" id="Email">
+                                                            <span id="emailError" class="error-message"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label asp-for="Position">Position</label>
+                                                            <input asp-for="Position" class="form-control" type="text" placeholder="Your Position" id="Position">
+                                                            <span id="positionError" class="error-message"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Service</label>
+                                                            <input asp-for="ServiceItem.Name" class="form-control" type="text" value="@(Model.ServiceItem != null ? Model.ServiceItem.Name : string.Empty)" id="Location" disabled>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label asp-for="City">City</label>
+                                                            <select asp-for="City" class="form-select" style="height: 55px;" id="City">
+                                                                <option value="@Model.City">@Model.City</option>
+                                                            </select>
+                                                            <span id="cityError" class="error-message"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Location</label>
+                                                            <input asp-for="Location" class="form-control" type="url" placeholder="Your Location" id="Location">
+                                                            <span id="locationError" class="error-message"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <label>Phone</label>
+                                                        <input asp-for="Phone" class="form-control" type="text" placeholder="Your Phone" id="Phone">
+                                                        <span id="phoneError" class="error-message"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input asp-for="Password" class="form-control" type="text" placeholder="Your Password" id="Password">
+                                                        <span id="passwordError" class="error-message"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col d-flex justify-content-end">
+                                                <a asp-action="ProviderProfile" style="margin-right:3px;" name="submit" style="border-radius:1px" class="btn btn-secondary">Cancel</a>
+                                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+
+    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiii");
+
+    var cities = ["Irbid", "Amman", "Jerash", "Madaba"];
+    var citySelect = document.getElementById('City');
+
+    cities.forEach(function (city) {
+        var option = document.createElement('option');
+        option.value = city;
+        option.text = city;
+        citySelect.add(option);
+    });
+
+    function validateForm() {
+        var name = document.getElementById("Name").value;
+        var email = document.getElementById("Email").value;
+        var password = document.getElementById("Password").value;
+        var phoneNumber = document.getElementById("Phone").value;
+        var locationUrl = document.getElementById("Location").value;
+        var city = document.getElementById("City").value;
+        var position = document.getElementById("Position").value;
+
+
+        var nameError = document.getElementById("nameError");
+        var emailError = document.getElementById("emailError");
+        var passwordError = document.getElementById("passwordError");
+        var phoneError = document.getElementById("phoneError");
+        var locationError = document.getElementById("locationError");
+        var cityError = document.getElementById("cityError");
+        var positionError = document.getElementById("positionError");
+
+        // Reset previous errors
+        nameError.innerHTML = "";
+        emailError.innerHTML = "";
+        passwordError.innerHTML = "";
+        phoneError.innerHTML = "";
+        locationError.innerHTML = "";
+        cityError.innerHTML = "";
+        positionError.innerHTML = "";
+
+        var isValid = true;
+
+        // Validate Name
+        if (name.trim() === "") {
+            nameError.innerHTML = "Name is required";
+            isValid = false;
+        }
+
+        // validate Position
+        if (position.trim() === "") {
+            positionError.innerHTML = "Position is required";
+            isValid = false;
+        }
+
+        // Validate city
+        if (city.trim() === "") {
+            cityError.innerHTML = "City is required";
+            isValid = false;
+        }
+
+
+        // Validate Email
+        if (!isValidEmail(email)) {
+            emailError.innerHTML = "Invalid email address";
+            isValid = false;
+        }
+
+        // Validate Phone Number
+        if (phoneNumber.trim() === "") {
+            phoneError.innerHTML = "Phone number is required";
+            isValid = false;
+        } else if (!isValidPhoneNumber(phoneNumber)) {
+            phoneError.innerHTML = 'Invalid phone number format (e.g., 1234567890)';
+            isValid = false;
+        }
+
+        // Validate Location URL
+        // if (locationUrl.trim() === "") {
+        //     locationError.innerHTML = "Location URL is required";
+        //     isValid = false;
+        // } else if (!isValidUrl(locationUrl)) {
+        //     locationError.innerHTML = 'Invalid URL format';
+        //     isValid = false;
+        // }
+
+        // Validate Password
+        if (password.length < 8) {
+            passwordError.innerHTML = "Password must be at least 8 characters long";
+            isValid = false;
+        } else if (!containsUpperCase(password)) {
+            passwordError.innerHTML = "Password must contain at least one uppercase letter";
+            isValid = false;
+        } else if (!containsLowerCase(password)) {
+            passwordError.innerHTML = "Password must contain at least one lowercase letter";
+            isValid = false;
+        } else if (!containsDigit(password)) {
+            passwordError.innerHTML = "Password must contain at least one digit";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    function isValidEmail(email) {
+        // Regular expression for a valid email address
+        var emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function containsUpperCase(str) {
+        return /[A-Z]/.test(str);
+    }
+
+    function containsLowerCase(str) {
+        return /[a-z]/.test(str);
+    }
+
+    function containsDigit(str) {
+        return /\d/.test(str);
+    }
+
+    function isValidUrl(url) {
+        var urlRegex = /^(http|https):\/\/[^ "]+$/;
+        return urlRegex.test(url);
+    }
+
+    function isValidPhoneNumber(phoneValue) {
+        var phoneRegex = /^[0-9]{10}$/;
+        return phoneRegex.test(phoneValue)
+    }
+
+
+</script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript"></script>

@@ -1,0 +1,57 @@
+﻿@model List<Provider>
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Our Team</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Our Team</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            @if (Model != null && Model.Count > 0)
+            {
+                <h1 class="display-5 mb-5">Providers For @Model[0].ServiceItem.Name</h1>
+                <!-- The rest of your HTML code here -->
+            }
+            else
+            {
+                <p>No providers available.</p>
+            }
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="overflow-hidden position-relative">
+                            <img class="img-fluid" src="~/Customer/img/team-1.jpg" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                @* <a class="btn btn-square" href=""><i class="fa fa-details">Details</i></a> *@
+                            </div>
+                        </div>
+                        <div class="text-center border border-5 border-light border-top-0 p-4">
+                            <h5 class="mb-0">@item.Name</h5>
+                            <small>@item.Position</small><br />
+                            <a class="btn btn-primary" style="margin-top:6px;" asp-action="addToOrders" asp-route-id="@item.ID"><i class="fa fa-details">Request</i></a>
+                            <a class="btn btn-dark" style="margin-top:6px;" asp-action="ProviderDetails" asp-route-id="@item.ID"><i class="fa fa-details">Details</i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Team End -->

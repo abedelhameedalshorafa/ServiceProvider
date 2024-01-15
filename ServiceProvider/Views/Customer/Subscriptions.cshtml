@@ -1,0 +1,157 @@
+﻿@model List<Subscription>
+
+@using Newtonsoft.Json
+
+
+<header>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body {
+            padding: 24px;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        .table-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .table-data {
+            flex: 1 1 20%;
+            text-align: center;
+            margin: 5px;
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden; /* Hide overflowed content */
+            text-overflow: ellipsis; /* Display an ellipsis (...) to indicate overflow */
+        }
+
+        .containerr {
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+            justify-content: center;
+            /* align-items:center; */
+            min-height: 100vh;
+        }
+
+        .table {
+            width: 100%;
+            border: 1px solid #EEEEEE;
+        }
+
+        .table-header {
+            display: flex;
+            width: 100%;
+            background: #AB7442;
+        }
+
+        .table-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .table-data, .header__item {
+            flex: 1 1 20%;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .header__item {
+            text-transform: uppercase;
+        }
+
+        .headers {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            text-transform: none;
+        }
+    </style>
+</header>
+
+<div class="container-fluid page-header py-2 mb-2">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Feature</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Feature</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="containerr">
+    <div class="table">
+        <div class="table-header">
+            <div class="header__item"><span class="headers">Name</span></div>
+            <div class="header__item"><span class="headers">Payment Date</span></div>
+            <div class="header__item"><span class="headers">Payment Amount</span></div>
+            <div class="header__item"><span class="headers">Number Of Months</span></div>
+            <div class="header__item"><span class="headers">Subscription StartDate</span></div>
+            <div class="header__item"><span class="headers">Subscription EndDate</span></div>
+            <div class="header__item"><span class="headers">For Deleting</span></div>
+        </div>
+        <div class="table-content">
+            @foreach (var subscription in Model)
+            {
+                <div class="table-row">
+                    <div class="table-data">@subscription.Name</div>
+                    <div class="table-data">@subscription.paymentDate</div>
+                    <div class="table-data">@subscription.paymentAmount</div>
+                    <div class="table-data">@subscription.numberOfMonths</div>
+                    <div class="table-data">@subscription.startDate</div>
+                    <div class="table-data">@subscription.endDate</div>
+                    <div class="table-data">
+                        <a asp-action="DeleteSubscription" asp-route-id="@subscription.ID" class="btn btn-outline-primary" data-id="@subscription.ID">Delete</a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @if (Model != null && Model.Count > 0 && Model[0].Provider != null)
+    {
+        <text>Subscription End Date: @Model[0].Provider.SubscriptionEndDate</text>
+    }
+    else
+    {
+        <text>No subscription information available.</text>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $('.btn-outline-primary').on('click', function () {
+        var id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User clicked Yes, handle the deletion here
+                window.location.href = '@Url.Action("DeleteSubscription", "Customer")' + '?id=' + id;
+            }
+        });
+    });
+</script>
+
+

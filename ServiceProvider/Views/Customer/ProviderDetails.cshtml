@@ -1,0 +1,85 @@
+﻿@using System.Composition
+@model Provider
+
+<header>
+    <style>
+        /*  * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: 'Noto Sans', sans-serif;
+                } */
+
+        .card {
+            width: 85%;
+            border-radius: 50px;
+            background: #F5F5F5;
+            /* box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #ffffff; */
+            border: none;
+            /*  margin-top:10px; */
+        }
+
+        /* .text-center {
+                    color: black;
+                }
+         */
+    </style>
+</header>
+
+
+<div provider style="margin-top:10px; margin-bottom:10px;" class="container d-flex justify-content-center">
+    <div class="card p-3 py-4">
+        <div class="text-center">
+            <img src="~/Customer/img/about.jpg" width="100" class="rounded-circle">
+            <h3 class="mt-3">@Model.Name</h3>
+            <span class="mt-2 clearfix">@Model.Position</span>
+            <small class="mt-4">@Model.City</small><br />
+            <a class="btn btn-primary" style="margin-top:6px;" asp-action="addToOrders" asp-route-id="@Model.ID"><i class="fa fa-details">Request</i></a>
+        </div>
+    </div>
+</div>
+
+@if (Model.FeedbackForProviders.Count !=0)
+{
+
+    <!-- Testimonial Start -->
+    <div reviews class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div style="width:85%;" class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5" style="font-size:x-large">Testimonial</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                @foreach (var item in Model.FeedbackForProviders)
+                {
+                    <div class="testimonial-item text-center">
+                        <img class="img-fluid bg-light p-2 mx-auto mb-3" src="@Url.Content(item.Customer.ImageUrl)" style="width: 90px; height: 90px;">
+                        <div class="testimonial-text text-center p-4">
+                            <h5 class="mb-1">@item.Customer.Name</h5>
+                            <p>@item.Text</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div id="reviewFormPopup" class="mx-auto col-md-6">
+            <form id="reviewForm" asp-action="AddFeedbackForProvider" method="post">
+                <div class="form-floating">
+                    <textarea class="form-control" name="feedback" placeholder="Leave a message here" id="message" style="height: 100px" rows="8" cols="60"></textarea>
+                    <label for="message">Feedback</label>
+                    <input name="id" value="@Model.ID" hidden />
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary"> Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

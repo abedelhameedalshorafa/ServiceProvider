@@ -1,0 +1,95 @@
+﻿@model Service
+
+@{
+    Layout = "Admin";
+}
+
+<html>
+<head>
+    <style>
+        .error-message {
+            color: #ff0000; /* Red color for error messages */
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <form asp-action="AddOrUpdateService" method="post" onsubmit="return validateForm()" enctype="multipart/form-data" class="col-sm-12 col-xl-12">
+        <div class="bg-light rounded h-100 p-4">
+            <input asp-for="ID" hidden />
+            <input asp-for="ImageUrl" hidden />
+            <div class="form-floating mb-3">
+                <input asp-for="Name" type="text" class="form-control border-0" placeholder=" " id="Name">
+                <label for="Name">Your Name</label>
+                <span id="nameError" class="error-message"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Description" type="text" class="form-control border-0" placeholder=" " id="Description">
+                <label for="Description">Your Description</label>
+                <span id="descriptionError" class="error-message"></span>
+            </div>
+            <div class="form-floating mb-3">
+                @if (Model != null && Model.ImageUrl != null)
+                {
+                    <img class="rounded-circle" src="@Url.Content(Model.ImageUrl)" alt="" style="width: 70px; height: 70px;">
+                }
+                <input asp-for="ImageFile" type="file" class="form-control border-0" placeholder="Your Photo" style="height: 55px;" id="Imagefile">
+                <span id="imageError" class="error-message"></span>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Form End -->
+    <script>
+
+
+
+        function validateForm() {
+            var name = document.getElementById("Name").value;
+            var description = document.getElementById("Description").value;
+            // var Imagefile = document.getElementById("Imagefile").value;
+
+            var nameError = document.getElementById("nameError");
+            var descriptionError = document.getElementById("descriptionError");
+            // var imageError = document.getElementById("imageError");
+
+            // Reset previous errors
+            nameError.innerHTML = "";
+            descriptionError.innerHTML = "";
+            // imageError.innerHTML = "";
+
+            var isValid = true;
+
+            // Validate Name
+            if (name.trim() === "") {
+                nameError.innerHTML = "Name is required";
+                isValid = false;
+            }
+
+            if (description.trim() === "") {
+                descriptionError.innerHTML = "Description is required";
+                isValid = false;
+            }
+
+            // Validate img
+            // if (Imagefile.trim() === "") {
+            //     imageError.innerHTML = "Image is required";
+            //     isValid = false;
+            // } else {
+            //     isValid = true;
+            // }
+
+            return isValid;
+        }
+
+
+    </script>
+
+</body>
+</html>

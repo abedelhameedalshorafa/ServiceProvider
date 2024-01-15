@@ -1,0 +1,30 @@
+﻿@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <style>
+        /* Customize the success notification style */
+        .toast-success {
+            background-color: #4CAF50; /* Change this to your desired color */
+        }
+    </style>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+@if (TempData["error"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <style>
+        /* Customize the error notification style */
+        .toast-error {
+            background-color: #FF6347; /* Change this to your desired color */
+        }
+    </style>
+
+    <script type="text/javascript">
+        toastr.error('@TempData["error"]');
+    </script>
+}

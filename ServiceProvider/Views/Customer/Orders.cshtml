@@ -1,0 +1,181 @@
+﻿@using Newtonsoft.Json
+@model List<Order>
+
+
+<header>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body {
+            padding: 24px;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        .table-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .table-data {
+            flex: 1 1 20%;
+            text-align: center;
+            margin: 5px;
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden; /* Hide overflowed content */
+            text-overflow: ellipsis; /* Display an ellipsis (...) to indicate overflow */
+        }
+        .containerr {
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+            justify-content: center;
+            /* align-items:center; */
+            min-height: 100vh;
+        }
+
+        .table {
+            width: 100%;
+            border: 1px solid #EEEEEE;
+        }
+
+        .table-header {
+            display: flex;
+            width: 100%;
+            background: #AB7442;
+        }
+
+        .table-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .table-data, .header__item {
+            flex: 1 1 20%;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .header__item {
+            text-transform: uppercase;
+        }
+
+        .headers {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            text-transform: none;
+        }
+    </style>
+</header>
+
+<div class="container-fluid page-header py-2 mb-2">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Feature</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Feature</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="containerr">
+    <div class="table">
+        @{
+            string? customerJson = Context.Session.GetString("LiveCustomer");
+        }
+
+        @if (!string.IsNullOrEmpty(customerJson))
+        {
+            <div class="table-header">
+
+                <div class="header__item"><span class="headers">Removing</span></div>
+                <div class="header__item"><span class="headers">Provider Image</span></div>
+                <div class="header__item"><span class="headers">Provider Name</span></div>
+                <div class="header__item"><span class="headers">Date</span></div>
+                <div class="header__item"><span class="headers">Status</span></div>
+            </div>
+            <div class="table-content">
+                @foreach (var item in Model)
+                {
+                    <div class="table-row" style="box-sizing:border-box;">
+                        <div class="table-data">
+                            <a class="btn btn-close" data-id="@item.ID"></a>
+                        </div>
+                        <div class="table-data">@item.Provider.ImageUrl</div>
+                        <div class="table-data">@item.Provider.Name</div>
+                        <div class="table-data">@item.Date</div>
+                        <div class="table-data">@item.status</div>
+                          @* here pending and accept and like this *@
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="table-header">
+                <div class="header__item"><span class="headers">Customer Name</span></div>
+                <div class="header__item"><span class="headers">Customer Number</span></div>
+                <div class="header__item"><span class="headers">Customer Email</span></div>
+                <div class="header__item"><span class="headers">Customer City</span></div>
+                <div class="header__item"><span class="headers">Customer Location</span></div>
+                <div class="header__item"><span class="headers">For Approving</span></div>
+            </div>
+            <div class="table-content">
+                @foreach (var item in Model)
+                {
+                    <div class="table-row" style="box-sizing:border-box;">
+                        <div class="table-data">@item.Customer.Name</div>
+                        <div class="table-data">@item.Customer.Phone</div>
+                        <div class="table-data">@item.Customer.Email</div>
+                        <div class="table-data">@item.Customer.City</div>
+                        <div class="table-data">@item.Customer.Location</div>
+                        @if (item.status == orderStatus.Pending)
+                        {
+                            <div class="table-data">
+                                <a asp-action="AcceptOrder" asp-route-id="@item.ID" class="btn btn-outline-primary" data-id="@item.ID">Accept</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="table-data">@item.status</div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $('.btn-close').on('click', function () {
+        var id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User clicked Yes, handle the deletion here
+                window.location.href = '@Url.Action("DeleteOrder", "Customer")' + '?id=' + id;
+            }
+        });
+    });
+</script>

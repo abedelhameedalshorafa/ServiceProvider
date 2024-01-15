@@ -1,0 +1,31 @@
+﻿@model List<ServiceItem>
+
+    
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-5 mb-5">@Model[0].Service.Name</h1>
+        </div>
+        <div class="row g-4 portfolio-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item @item.Service.Name wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="@Url.Content(item.UrlImage)" alt="">
+                            <div class="portfolio-overlay">
+                                <a class="btn btn-square btn-outline-light mx-1" href="~/Customer/img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-group-lg btn-outline-light mx-1" href=""><i class="fa fa-details">Details</i></a>
+                            </div>
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            @* <p class="text-primary fw-medium mb-2">@item.Service.Name</p> *@
+                            <h5 class="lh-base mb-0">@item.Name</h5>
+                            <a class="fw-medium" asp-action="ShowProviders" asp-route-id="@item.ID">Show Providers<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

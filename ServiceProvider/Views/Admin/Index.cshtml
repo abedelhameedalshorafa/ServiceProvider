@@ -1,0 +1,139 @@
+﻿@{
+    Layout = "Admin";
+}
+
+@model List<Order>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-person fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Customers Count</p>
+                    <h6 class="mb-0">@ViewBag.totalCustomers</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-person fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Providers Count</p>
+                    <h6 class="mb-0">@ViewBag.totalProviders</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-bar-chart  fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Total Orders</p>
+                    <h6 class="mb-0">@ViewBag.totalOrders</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-pie-chart-fill fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Total Revenue</p>
+                    <h6 class="mb-0">
+                        @ViewBag.totalRevenue
+                    </h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-bar-chart  fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Total Orders Pending</p>
+                    <h6 class="mb-0">
+                        @ViewBag.totalOrdersPending
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-person fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Providers count Not Accept</p>
+                    <h6 class="mb-0">
+                        @ViewBag.totalProvidersNotAccept
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-bar-chart  fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Today Orders</p>
+                    <h6 class="mb-0">
+                        @ViewBag.todayOrders
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="bi bi-pie-chart-fill fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Today Revenue</p>
+                    <h6 class="mb-0">
+                        @ViewBag.todayRevenue
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+<!-- Recent Sales Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Recent Salse</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col">Date</th>
+                        <th scope="col">Provider</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderBy(m => m.Date))
+                    {
+                        <tr>
+                            <td>@item.Date.ToString("dddd, MMMM dd, yyyy")</td>
+                            <td>@item.Provider.Name</td>
+                            <td>@item.Customer.Name</td>
+                            @if(item.status==orderStatus.Accepted)
+                            {
+                                <td class="p-2 mb-2 bg-success text-white">@item.status</td>
+                            }
+                            else if(item.status==orderStatus.Pending)
+                            {
+                                <td class="p-2 mb-2 bg-warning text-white">@item.status</td>
+                            }
+                            else
+                            {
+                                <td class="p-2 mb-2 bg-danger text-white">@item.status</td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Sales End -->
