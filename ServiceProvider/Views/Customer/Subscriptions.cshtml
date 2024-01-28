@@ -72,19 +72,18 @@
             display: inline-block;
             text-transform: none;
         }
+
+        .page-header {
+            background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('../Images/Subscription.jpg') center center no-repeat;
+            background-size: cover;
+            height: 40vh;
+        }
     </style>
 </header>
 
-<div class="container-fluid page-header py-2 mb-2">
+<div class="container-fluid page-header py-5 mb-2">
     <div class="container py-5">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">Feature</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="text-white">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Feature</li>
-            </ol>
-        </nav>
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Subscriptions</h1>
     </div>
 </div>
 
@@ -110,7 +109,7 @@
                     <div class="table-data">@subscription.startDate</div>
                     <div class="table-data">@subscription.endDate</div>
                     <div class="table-data">
-                        <a asp-action="DeleteSubscription" asp-route-id="@subscription.ID" class="btn btn-outline-primary" data-id="@subscription.ID">Delete</a>
+                        <a class="btn btn-outline-primary" data-id="@subscription.ID">Delete</a>
                     </div>
 
                 </div>

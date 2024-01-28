@@ -132,7 +132,7 @@ namespace ServiceProvider.Controllers
             if (customerJson == null)
             {
                 TempData["ReturnUrl"] = Url.Action("AddToOrders", "Customer", new { id = ID });
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Login", "Login");
             }
             else
             {
@@ -160,7 +160,7 @@ namespace ServiceProvider.Controllers
             if (customerJson == null)
             {
                 TempData["ReturnUrl"] = Url.Action("Orders", "Customer");
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Login", "Login");
             }
             else
             {
@@ -328,6 +328,7 @@ namespace ServiceProvider.Controllers
                         {
                             provider.SubscriptionStartDate = DateTime.Now;
                             provider.SubscriptionEndDate = provider.SubscriptionStartDate.AddMonths(subscription.numberOfMonths);
+                            provider.IsSubscriptionActive = true;
                         }
                         else
                         {
@@ -341,6 +342,13 @@ namespace ServiceProvider.Controllers
                         _db.subscriptions.Add(subscription);
                         _db.providers.Update(provider);
                         _db.SaveChanges();
+
+                        string updatedProviderJson = JsonConvert.SerializeObject(provider, new JsonSerializerSettings
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
+
+                        HttpContext.Session.SetString("LiveProvider", updatedProviderJson);
 
                         TempData["success"] = "Payment processed successfully";
                         return RedirectToAction("Subscriptions");
@@ -385,7 +393,7 @@ namespace ServiceProvider.Controllers
                     }
                     else
                     {
-                        TempData["error"] = "Must Pay To Have Orders";
+                        TempData["error"] = "Must Pay To Receive Orders";
                         return RedirectToAction("PaySubscription");
                     }
                 }

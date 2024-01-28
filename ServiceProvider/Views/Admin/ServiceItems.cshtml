@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "Admin";
+}
+
+@model List<ServiceItem>
+
+<header>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+</header>
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Service Items</h6>
+        <form class="d-none d-md-flex ms-2" asp-action="ItemSearch" method="post">
+            <input class="form-control border-0" style="width:20%;" type="search" placeholder="Search" name="searchItem">
+            <button style="margin-left:4px;" class="btn btn-outline-primary" type="submit">Search</button>
+            <a style="margin-left:5px;" class="btn btn-outline-primary" asp-action="AddOrUpdateItem">Add Item</a>
+        </form>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Service Name</th>
+                        <th scope="col">Total Providers</th>
+                        <th scope="col">For Editing</th>
+                        <th scope="col">For Showing Providers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var count = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td><img class="rounded-circle" src="@((item.UrlImage != null) ? Url.Content(item.UrlImage) : "")" alt="" style="width: 35px; height: 35px;"></td>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>@item.Service.Name</td>
+                            <td>@item.Providers.Count()</td>
+                            <td><a class="btn btn-primary" asp-action="AddOrUpdateItem" asp-route-id="@item.ID">Edit</a></td>
+                            <td><a class="btn btn-success" asp-action="ShowProviders" asp-route-id="@item.ID">show Providers</a></td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Table End -->

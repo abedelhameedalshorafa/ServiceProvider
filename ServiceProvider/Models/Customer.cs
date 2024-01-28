@@ -30,6 +30,8 @@ namespace ServiceProvider.Models
         [Url]
         public string? Location { get; set; }
 
+        public bool ForDelete { get; set; } = false;
+
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
 

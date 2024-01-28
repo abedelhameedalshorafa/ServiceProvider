@@ -6,13 +6,6 @@
 
     <header>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <style>
-        td, th {
-            flex: 1 1 20%;
-            text-align: center;
-            margin: 5px;
-        }
-    </style>
     </header>
 <div class="col-12">
     <div class="bg-light rounded h-100 p-4">
@@ -27,7 +20,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        @* <th scope="col">#</th> *@
+                         <th scope="col">#</th>
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
@@ -47,7 +40,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            @* <th scope="row">@count</th> *@
+                            <th scope="row">@count</th>
                             <td><img class="rounded-circle" src="@((item.ImageUrl != null) ? Url.Content(item.ImageUrl) : "")" alt="" style="width: 35px; height: 35px;"></td>
                             <td>@item.Name</td>
                             <td>@item.Email</td>

@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "Admin";
+}
+
+@model List<Order>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Orders</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col">Date</th>
+                        <th scope="col">Provider</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderBy(m => m.Date))
+                    {
+                        <tr>
+                            <td>@item.Date.ToString("dddd, MMMM dd, yyyy")</td>
+                            <td>@item.Provider.Name</td>
+                            <td>@item.Customer.Name</td>
+                            @if (item.status == orderStatus.Accepted)
+                            {
+                                <td class="p-2 mb-2 bg-success text-white">@item.status</td>
+                            }
+                            else if (item.status == orderStatus.Pending)
+                            {
+                                <td class="p-2 mb-2 bg-warning text-white">@item.status</td>
+                            }
+                            else
+                            {
+                                <td class="p-2 mb-2 bg-danger text-white">@item.status</td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

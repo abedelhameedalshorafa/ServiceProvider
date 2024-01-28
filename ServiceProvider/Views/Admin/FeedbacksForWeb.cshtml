@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "Admin";
+}
+
+@model List<FeedbackForWeb>
+
+<header>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        td, th {
+            flex: 1 1 20%;
+            text-align: center;
+            margin: 5px;
+        }
+    </style>
+</header>
+<div class="col-12" style="width:100%;">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Web Feedbacks</h6>
+        <div class="table-responsive" style="padding-top:10px;padding-bottom:15px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Count</th>
+                        <th scope="col">Customer Image</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Feedback Text</th>
+                        <th scope="col">For Approving</th>
+                        <th scope="col">For Deleting</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var count = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td><img class="rounded-circle" src="@((item.Customer.ImageUrl != null) ? Url.Content(item.Customer.ImageUrl) : "")" alt="" style="width: 35px; height: 35px;"></td>
+                            <td>@item.Customer.Name</td>
+                            <td>@item.Text</td>
+                            @if(item.Status==feedbackStatus.Pending)
+                            {
+                                <td><a class="btn btn-success" asp-action="ApproveWebFeedback" asp-route-id="@item.ID">Approve</a></td>
+                            }
+                            else
+                            {
+                                <td>@item.Status</td>
+                            }
+                            <td><a class="btn btn-danger" data-id="@item.ID">Delete</a></td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Table End -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $('.btn-danger').on('click', function () {
+        var id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User clicked Yes, handle the deletion here
+                window.location.href = '@Url.Action("DeleteWebFeedback", "Admin")' + '?id=' + id;
+            }
+        });
+    });
+</script>
+

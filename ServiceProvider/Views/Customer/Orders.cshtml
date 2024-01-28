@@ -70,19 +70,18 @@
             display: inline-block;
             text-transform: none;
         }
+
+        .page-header {
+            background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('/images/orders.jpg') center center no-repeat;
+            background-size: cover;
+            height:40vh;
+        }
     </style>
 </header>
 
-<div class="container-fluid page-header py-2 mb-2">
+<div class="container-fluid page-header py-5 mb-2">
     <div class="container py-5">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">Feature</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="text-white">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Feature</li>
-            </ol>
-        </nav>
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Orders</h1>
     </div>
 </div>
 
@@ -95,24 +94,23 @@
         @if (!string.IsNullOrEmpty(customerJson))
         {
             <div class="table-header">
-
-                <div class="header__item"><span class="headers">Removing</span></div>
                 <div class="header__item"><span class="headers">Provider Image</span></div>
                 <div class="header__item"><span class="headers">Provider Name</span></div>
                 <div class="header__item"><span class="headers">Date</span></div>
                 <div class="header__item"><span class="headers">Status</span></div>
+                <div class="header__item"><span class="headers">Removing</span></div>
             </div>
             <div class="table-content">
                 @foreach (var item in Model)
                 {
                     <div class="table-row" style="box-sizing:border-box;">
+                        <div class="table-data">@item.Provider.ImageUrl</div>
+                        <div class="table-data">@item.Provider.Name</div>
+                        <div class="table-data">@item.Date.ToString("dddd, MMMM dd, yyyy")</div>
+                        <div class="table-data">@item.status</div>
                         <div class="table-data">
                             <a class="btn btn-close" data-id="@item.ID"></a>
                         </div>
-                        <div class="table-data">@item.Provider.ImageUrl</div>
-                        <div class="table-data">@item.Provider.Name</div>
-                        <div class="table-data">@item.Date</div>
-                        <div class="table-data">@item.status</div>
                           @* here pending and accept and like this *@
                     </div>
                 }

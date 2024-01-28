@@ -352,8 +352,9 @@
                             </span>
                             <b onclick="toggle()" class="pointer">
                                 Sign in here
-                            </b><br />
-                            <a style="text-decoration:none; color:white; border:1px solid black; background-color:gray;" asp-action="AddProvider"><b>Sign Up As Aprovider Here</b></a>
+                            </b><br /><br />
+                            <a class="pointer" style="text-decoration:none; color:black;" asp-action="AddProvider"><b>Sign Up As Aprovider Here</b></a>
+                            @*  border:1px solid black; background-color:gray;" *@
                         </p>
                     </div>
                 </div>
@@ -365,22 +366,22 @@
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-in">
                         <div class="input-group">
-                            <input name="email" type="email" placeholder="Email">
+                            <input name="email" type="email" placeholder="Email" required>
                         </div>
                         <div class="input-group">
-                            <input name="password" type="password" placeholder="Password">
+                            <input name="password" type="password" placeholder="Password" required>
                         </div>
-                        <div class="text-danger">
+                        <div style="color:red;">
                             @Html.ValidationMessage("InvalidUser")
                         </div>
                         <button>
                             Sign in
                         </button>
-                        <p>
+                        @* <p>
                             <b>
                                 Forgot password?
                             </b>
-                        </p>
+                        </p> *@
                         <p>
                             <span>
                                 Don't have an account?

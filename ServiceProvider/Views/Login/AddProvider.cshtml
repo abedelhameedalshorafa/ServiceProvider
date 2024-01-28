@@ -12,9 +12,13 @@
             font-size: 14px;
             margin-top: 5px;
         }
+
+        .s {
+            background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('../Images/Signup1.jpg') center center no-repeat;
+            background-size: cover;
+        }
     </style>
-
-
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ServiceProvider</title>
@@ -47,15 +51,16 @@
 </head>
 <body>
 
-    <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
+    <div class="container-fluid bg-light overflow-hidden px-lg-0">
+        <div class="container-fluid s py-5 mb-0">
+            <div class="container py-5">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Sign Up </h1>
+            </div>
+        </div>
         <div class="container quote px-lg-0">
             <div class="row g-0 mx-lg-0">
-                <div style="width:80%;" class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                <div style="width:100%;" class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-lg-5 pe-lg-0">
-                        <div class="section-title text-start">
-                            <h1 class="display-5 mb-4">Free Quote</h1>
-                        </div>
-                        <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
                         <form asp-action="AddProvider" asp-controller="Login" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
@@ -83,7 +88,7 @@
                                     <span id="imageError" class="error-message"></span>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input asp-for="Location" type="url" class="form-control border-0" placeholder="Your Photo" style="height: 55px;" id="Location">
+                                    <input asp-for="Location" type="url" class="form-control border-0" placeholder="Your Location" style="height: 55px;" id="Location">
                                     <span id="locationError" class="error-message"></span>
                                 </div>
                                 <div class="col-12 col-sm-6">

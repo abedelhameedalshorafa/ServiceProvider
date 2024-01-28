@@ -30,7 +30,7 @@
 <div provider style="margin-top:10px; margin-bottom:10px;" class="container d-flex justify-content-center">
     <div class="card p-3 py-4">
         <div class="text-center">
-            <img src="~/Customer/img/about.jpg" width="100" class="rounded-circle">
+            <img src="@((Model.ImageUrl != null) ? Url.Content(Model.ImageUrl) : "")" width="100" class="rounded-circle">
             <h3 class="mt-3">@Model.Name</h3>
             <span class="mt-2 clearfix">@Model.Position</span>
             <small class="mt-4">@Model.City</small><br />

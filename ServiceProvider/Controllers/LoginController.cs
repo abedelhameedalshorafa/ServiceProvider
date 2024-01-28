@@ -46,7 +46,14 @@ namespace ServiceProvider.Controllers
                             _db.providers.Update(provider);
                             _db.SaveChanges();
 
-                            TempData["error"] = "Must Pay For New Subscriptions";
+                            string updatedProviderJson = JsonConvert.SerializeObject(provider, new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+
+                            HttpContext.Session.SetString("LiveProvider", updatedProviderJson);
+
+                            TempData["error"] = "Must Pay For New Subscriptions And To Recive Orders";
                             return RedirectToAction("PaySubscription", "Customer");
                         }
                         else
@@ -58,7 +65,7 @@ namespace ServiceProvider.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Customer");
+                        return RedirectToAction("Orders", "Customer",new {id=1});
                     }
 
                 }
@@ -169,7 +176,7 @@ namespace ServiceProvider.Controllers
                 string providerJson = JsonConvert.SerializeObject(provider);
                 HttpContext.Session.SetString("LiveProvider", providerJson);
 
-                TempData["success"] = "Added provider And Login Successfully But YOu Can't Recive Order or Pay for Subscription Unless The Admin Approves You ";
+                TempData["success"] = "Added provider And Login Successfully But You Can't Recive Order or Pay for Subscription Unless The Admin Approves You ";
 
                 return RedirectToAction("Index", "Customer");
             }

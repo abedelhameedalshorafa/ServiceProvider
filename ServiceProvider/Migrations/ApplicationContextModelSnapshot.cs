@@ -37,6 +37,9 @@ namespace ServiceProvider.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("ForDelete")
+                        .HasColumnType("bit");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -59,6 +62,34 @@ namespace ServiceProvider.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("customers");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            City = "Irbid",
+                            Email = "abed@admin.com",
+                            ForDelete = false,
+                            ImageUrl = "~/Images/0708f78a-44fa-417b-8804-6e993de3f51fdf.png",
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            Name = "Abedelhameed Alshorafa",
+                            Password = "12",
+                            Phone = 777848419,
+                            Role = 0
+                        },
+                        new
+                        {
+                            ID = 2,
+                            City = "Irbid",
+                            Email = "abed@customer.com",
+                            ForDelete = false,
+                            ImageUrl = "~/Images/5ca3e71a-bf4c-4f55-84dc-1913ff189962RMI_8341.JPG",
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            Name = "Abedelhameed Alshorafa",
+                            Password = "12",
+                            Phone = 777848419,
+                            Role = 2
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.FeedbackForProvider", b =>
@@ -92,6 +123,818 @@ namespace ServiceProvider.Migrations
                     b.HasIndex("providerID");
 
                     b.ToTable("feedbackForProviders");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Prompt and Reliable",
+                            customerID = 2,
+                            providerID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 1
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 1
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Excellent Work",
+                            customerID = 2,
+                            providerID = 2
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 2
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Top-notch Service",
+                            customerID = 2,
+                            providerID = 2
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Top-notch Service",
+                            customerID = 2,
+                            providerID = 3
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 3
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 3
+                        },
+                        new
+                        {
+                            ID = 10,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 4
+                        },
+                        new
+                        {
+                            ID = 11,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 4
+                        },
+                        new
+                        {
+                            ID = 12,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 4
+                        },
+                        new
+                        {
+                            ID = 13,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Outstanding Performance",
+                            customerID = 2,
+                            providerID = 5
+                        },
+                        new
+                        {
+                            ID = 14,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 5
+                        },
+                        new
+                        {
+                            ID = 15,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 5
+                        },
+                        new
+                        {
+                            ID = 16,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 6
+                        },
+                        new
+                        {
+                            ID = 17,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Outstanding Performance",
+                            customerID = 2,
+                            providerID = 6
+                        },
+                        new
+                        {
+                            ID = 18,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 6
+                        },
+                        new
+                        {
+                            ID = 19,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Outstanding Performance",
+                            customerID = 2,
+                            providerID = 7
+                        },
+                        new
+                        {
+                            ID = 20,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 7
+                        },
+                        new
+                        {
+                            ID = 21,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 7
+                        },
+                        new
+                        {
+                            ID = 22,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Outstanding Performance",
+                            customerID = 2,
+                            providerID = 8
+                        },
+                        new
+                        {
+                            ID = 23,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 8
+                        },
+                        new
+                        {
+                            ID = 24,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 8
+                        },
+                        new
+                        {
+                            ID = 25,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 9
+                        },
+                        new
+                        {
+                            ID = 26,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 9
+                        },
+                        new
+                        {
+                            ID = 27,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 9
+                        },
+                        new
+                        {
+                            ID = 28,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Outstanding Performance",
+                            customerID = 2,
+                            providerID = 10
+                        },
+                        new
+                        {
+                            ID = 29,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 10
+                        },
+                        new
+                        {
+                            ID = 30,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 10
+                        },
+                        new
+                        {
+                            ID = 31,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 11
+                        },
+                        new
+                        {
+                            ID = 32,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 11
+                        },
+                        new
+                        {
+                            ID = 33,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 11
+                        },
+                        new
+                        {
+                            ID = 34,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Outstanding Performance",
+                            customerID = 2,
+                            providerID = 12
+                        },
+                        new
+                        {
+                            ID = 35,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 12
+                        },
+                        new
+                        {
+                            ID = 36,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 12
+                        },
+                        new
+                        {
+                            ID = 37,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 13
+                        },
+                        new
+                        {
+                            ID = 38,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 13
+                        },
+                        new
+                        {
+                            ID = 39,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 13
+                        },
+                        new
+                        {
+                            ID = 40,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 14
+                        },
+                        new
+                        {
+                            ID = 41,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 14
+                        },
+                        new
+                        {
+                            ID = 42,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 14
+                        },
+                        new
+                        {
+                            ID = 43,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 15
+                        },
+                        new
+                        {
+                            ID = 45,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 15
+                        },
+                        new
+                        {
+                            ID = 46,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 15
+                        },
+                        new
+                        {
+                            ID = 47,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 16
+                        },
+                        new
+                        {
+                            ID = 48,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 16
+                        },
+                        new
+                        {
+                            ID = 49,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 16
+                        },
+                        new
+                        {
+                            ID = 50,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 17
+                        },
+                        new
+                        {
+                            ID = 51,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 17
+                        },
+                        new
+                        {
+                            ID = 52,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 17
+                        },
+                        new
+                        {
+                            ID = 53,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 18
+                        },
+                        new
+                        {
+                            ID = 54,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 18
+                        },
+                        new
+                        {
+                            ID = 56,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 18
+                        },
+                        new
+                        {
+                            ID = 57,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 19
+                        },
+                        new
+                        {
+                            ID = 58,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 19
+                        },
+                        new
+                        {
+                            ID = 59,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 19
+                        },
+                        new
+                        {
+                            ID = 60,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 20
+                        },
+                        new
+                        {
+                            ID = 61,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 20
+                        },
+                        new
+                        {
+                            ID = 62,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 20
+                        },
+                        new
+                        {
+                            ID = 63,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 21
+                        },
+                        new
+                        {
+                            ID = 64,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 21
+                        },
+                        new
+                        {
+                            ID = 65,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 21
+                        },
+                        new
+                        {
+                            ID = 66,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 22
+                        },
+                        new
+                        {
+                            ID = 67,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 22
+                        },
+                        new
+                        {
+                            ID = 68,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 22
+                        },
+                        new
+                        {
+                            ID = 69,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 23
+                        },
+                        new
+                        {
+                            ID = 70,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 23
+                        },
+                        new
+                        {
+                            ID = 71,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 23
+                        },
+                        new
+                        {
+                            ID = 72,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 24
+                        },
+                        new
+                        {
+                            ID = 73,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 24
+                        },
+                        new
+                        {
+                            ID = 74,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 24
+                        },
+                        new
+                        {
+                            ID = 75,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 25
+                        },
+                        new
+                        {
+                            ID = 76,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 25
+                        },
+                        new
+                        {
+                            ID = 77,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 25
+                        },
+                        new
+                        {
+                            ID = 78,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 26
+                        },
+                        new
+                        {
+                            ID = 79,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 26
+                        },
+                        new
+                        {
+                            ID = 80,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 26
+                        },
+                        new
+                        {
+                            ID = 81,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 27
+                        },
+                        new
+                        {
+                            ID = 82,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 27
+                        },
+                        new
+                        {
+                            ID = 83,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 27
+                        },
+                        new
+                        {
+                            ID = 84,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 28
+                        },
+                        new
+                        {
+                            ID = 85,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 28
+                        },
+                        new
+                        {
+                            ID = 86,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 28
+                        },
+                        new
+                        {
+                            ID = 87,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 29
+                        },
+                        new
+                        {
+                            ID = 88,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 29
+                        },
+                        new
+                        {
+                            ID = 89,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 29
+                        },
+                        new
+                        {
+                            ID = 90,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Professional Support",
+                            customerID = 2,
+                            providerID = 30
+                        },
+                        new
+                        {
+                            ID = 91,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Exceptional Care",
+                            customerID = 2,
+                            providerID = 30
+                        },
+                        new
+                        {
+                            ID = 92,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Timely Solutions",
+                            customerID = 2,
+                            providerID = 30
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.FeedbackForWeb", b =>
@@ -120,6 +963,48 @@ namespace ServiceProvider.Migrations
                     b.HasIndex("customerID");
 
                     b.ToTable("feedbackForWebs");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Great service!",
+                            customerID = 2
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Had an issue, but resolved quickly.",
+                            customerID = 2
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Product was damaged.",
+                            customerID = 2
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Fast shipping, good quality.",
+                            customerID = 2
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Rating = 0.0,
+                            Status = 1,
+                            Text = "Easy returns process.",
+                            customerID = 2
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.Order", b =>
@@ -170,6 +1055,20 @@ namespace ServiceProvider.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("payments");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Password = "12",
+                            cardNo = "12"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Password = "123",
+                            cardNo = "123"
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.Provider", b =>
@@ -235,6 +1134,648 @@ namespace ServiceProvider.Migrations
                     b.HasIndex("serviceID");
 
                     b.ToTable("providers");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            City = "Irbid",
+                            Email = "provider1@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider1",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 2",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2656),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2645),
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            City = "Irbid",
+                            Email = "provider2@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider2",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 2",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2666),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2666),
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 3,
+                            City = "Irbid",
+                            Email = "provider3@provider.com",
+                            ImageUrl = "~/Customer/team-3.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider3",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 3",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2670),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2670),
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 4,
+                            City = "Irbid",
+                            Email = "provider4@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider4",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 4",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2677),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2676),
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 5,
+                            City = "Irbid",
+                            Email = "provider5@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider5",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 5",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2681),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2680),
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 6,
+                            City = "Irbid",
+                            Email = "provider6@provider.com",
+                            ImageUrl = "~/Customer/team-3.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider6",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 6",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2684),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2684),
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 7,
+                            City = "Irbid",
+                            Email = "provider7@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider7",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 7",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2687),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2687),
+                            serviceID = 11
+                        },
+                        new
+                        {
+                            ID = 8,
+                            City = "Irbid",
+                            Email = "provider8@provider.com",
+                            ImageUrl = "~/Customer/team-3.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider8",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 8",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2690),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2690),
+                            serviceID = 11
+                        },
+                        new
+                        {
+                            ID = 9,
+                            City = "Irbid",
+                            Email = "provider9@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider9",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 9",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2693),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2693),
+                            serviceID = 12
+                        },
+                        new
+                        {
+                            ID = 10,
+                            City = "Irbid",
+                            Email = "provider10@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider10",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 10",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2710),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2709),
+                            serviceID = 12
+                        },
+                        new
+                        {
+                            ID = 11,
+                            City = "Irbid",
+                            Email = "provider11@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider11",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 11",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2713),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2713),
+                            serviceID = 13
+                        },
+                        new
+                        {
+                            ID = 12,
+                            City = "Irbid",
+                            Email = "provider12@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider12",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 12",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2716),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2716),
+                            serviceID = 13
+                        },
+                        new
+                        {
+                            ID = 13,
+                            City = "Irbid",
+                            Email = "provider13@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider13",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 13",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2720),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2719),
+                            serviceID = 23
+                        },
+                        new
+                        {
+                            ID = 14,
+                            City = "Irbid",
+                            Email = "provider14@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider14",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 14",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2723),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2722),
+                            serviceID = 23
+                        },
+                        new
+                        {
+                            ID = 15,
+                            City = "Irbid",
+                            Email = "provider15@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider15",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 15",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2726),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2725),
+                            serviceID = 24
+                        },
+                        new
+                        {
+                            ID = 16,
+                            City = "Irbid",
+                            Email = "provider16@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider16",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 16",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2729),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2728),
+                            serviceID = 24
+                        },
+                        new
+                        {
+                            ID = 17,
+                            City = "Irbid",
+                            Email = "provider17@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider17",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 17",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2732),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2731),
+                            serviceID = 25
+                        },
+                        new
+                        {
+                            ID = 18,
+                            City = "Irbid",
+                            Email = "provider18@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider18",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 18",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2735),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2734),
+                            serviceID = 25
+                        },
+                        new
+                        {
+                            ID = 19,
+                            City = "Irbid",
+                            Email = "provider19@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider19",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 19",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2738),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2737),
+                            serviceID = 33
+                        },
+                        new
+                        {
+                            ID = 20,
+                            City = "Irbid",
+                            Email = "provider20@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider20",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 20",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2742),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2741),
+                            serviceID = 33
+                        },
+                        new
+                        {
+                            ID = 21,
+                            City = "Irbid",
+                            Email = "provider21@provider.com",
+                            ImageUrl = "~/Customer/team-3.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider21",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 21",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2745),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2744),
+                            serviceID = 34
+                        },
+                        new
+                        {
+                            ID = 22,
+                            City = "Irbid",
+                            Email = "provider22@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider22",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 22",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2748),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2747),
+                            serviceID = 34
+                        },
+                        new
+                        {
+                            ID = 23,
+                            City = "Irbid",
+                            Email = "provider23@provider.com",
+                            ImageUrl = "~/Customer/team-1.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider23",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 23",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2751),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2750),
+                            serviceID = 35
+                        },
+                        new
+                        {
+                            ID = 24,
+                            City = "Irbid",
+                            Email = "provider24@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider24",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 24",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2754),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2753),
+                            serviceID = 35
+                        },
+                        new
+                        {
+                            ID = 25,
+                            City = "Irbid",
+                            Email = "provider25@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider25",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 25",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2758),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2757),
+                            serviceID = 42
+                        },
+                        new
+                        {
+                            ID = 26,
+                            City = "Irbid",
+                            Email = "provider26@provider.com",
+                            ImageUrl = "~/Customer/team-3.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider26",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 26",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2761),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2760),
+                            serviceID = 42
+                        },
+                        new
+                        {
+                            ID = 27,
+                            City = "Irbid",
+                            Email = "provider27@provider.com",
+                            ImageUrl = "~/Customer/team-3.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider27",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 27",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2764),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2763),
+                            serviceID = 43
+                        },
+                        new
+                        {
+                            ID = 28,
+                            City = "Irbid",
+                            Email = "provider28@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider28",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 28",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2767),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2766),
+                            serviceID = 43
+                        },
+                        new
+                        {
+                            ID = 29,
+                            City = "Irbid",
+                            Email = "provider29@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider29",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 29",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2770),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2769),
+                            serviceID = 44
+                        },
+                        new
+                        {
+                            ID = 30,
+                            City = "Irbid",
+                            Email = "provider30@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = true,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider30",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 30",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 3, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2773),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2772),
+                            serviceID = 44
+                        },
+                        new
+                        {
+                            ID = 31,
+                            City = "Irbid",
+                            Email = "provider31@provider.com",
+                            ImageUrl = "~/Customer/team-4.jpg",
+                            IsActive = true,
+                            IsSubscriptionActive = false,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider31",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 31",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2776),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2775),
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 32,
+                            City = "Irbid",
+                            Email = "provider32@provider.com",
+                            ImageUrl = "~/Customer/team-2.jpg",
+                            IsActive = false,
+                            IsSubscriptionActive = false,
+                            Location = "https://www.google.com/maps/place/%D9%84%D9%88%D8%A7%D8%A1+%D8%A7%D9%84%D9%83%D9%88%D8%B1%D8%A9%E2%80%AD/@32.5126615,35.6878611,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x151c6fff37d056ab:0x8d45f28b1b2623ef!2z2K_ZitixINij2KjZiiDYs9i52YrYrw!3b1!8m2!3d32.4984964!4d35.6837977!16s%2Fm%2F0kbhjd9!3m5!1s0x151c65bcba3f0d0f:0x8050a8b00b1a63ec!8m2!3d32.5126615!4d35.6852862!16s%2Fg%2F11mvnp286r?entry=ttu",
+                            MonthlyPrice = 40.0,
+                            Name = "provider32",
+                            Password = "12",
+                            Phone = 777848419,
+                            Position = "position 32",
+                            Rate = 0.0,
+                            Role = 1,
+                            SubscriptionEndDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2778),
+                            SubscriptionStartDate = new DateTime(2024, 1, 27, 18, 30, 11, 528, DateTimeKind.Local).AddTicks(2778),
+                            serviceID = 1
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.Service", b =>
@@ -259,6 +1800,43 @@ namespace ServiceProvider.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("services");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Description = "Revitalize your home with our quick and efficient services. From cleaning to repairs, we've got it handled. Enjoy a hassle-free, comfortable living space with our expert touch.",
+                            ImageUrl = "~/Images/Home.png",
+                            Name = "Home"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Description = "Boost your health with our swift services. From check-ups to treatments, we've got it covered. Experience hassle-free, personalized care for a vibrant life.",
+                            ImageUrl = "~/Images/Health.png",
+                            Name = "Health"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Description = "Enhance your devices with our swift services. From repairs to upgrades, we've got it covered. Experience hassle-free, expert solutions for optimal performance..",
+                            ImageUrl = "~/Images/Mechanical.png",
+                            Name = "Mechanical"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Description = "Elevate your electrical well-being with our prompt services. From comprehensive assessments to expert solutions, we've got your electrical needs covered. Enjoy seamless, customized care for a powered-up and resilient system.",
+                            ImageUrl = "~/Images/Electrical.jpg",
+                            Name = "Electrical"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Description = "Revitalize your electronic systems with our efficient services. From diagnostics to tailored solutions, we've got your electronic requirements fully addressed. Experience a hassle-free journey to optimize and enhance your electronic devices for a seamlessly connected and empowered technological lifestyle.",
+                            ImageUrl = "~/Images/Electronic.jpg",
+                            Name = "Electronic"
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.ServiceItem", b =>
@@ -290,6 +1868,400 @@ namespace ServiceProvider.Migrations
                     b.HasIndex("serviceID");
 
                     b.ToTable("serviceItems");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Description = "Streamline your home setup with our assembly service. From furniture to electronics, we've got the assembly covered. Enjoy the ease of a quick and expertly assembled home, leaving you with more time to relax and enjoy your space. Our efficient service ensures your items come together seamlessly, making your home functional and cozy in no time.",
+                            Name = "Assembly",
+                            UrlImage = "~/Images/Home/Assembly.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Description = "Revitalize your home's electricity with our expert services. From installations to repairs, we've got you covered. Experience the ease of a safer and more efficient home. Trust us for quick, reliable electrical services to brighten up your living space.",
+                            Name = "Electrical Service",
+                            UrlImage = "~/Images/Home/Electrical Service.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Description = "Simplify your to-do list with our general handyman services. From small repairs to odd jobs, we've got the expertise to tackle a variety of tasks around your home. Enjoy the convenience of a skilled professional handling everything from fixing leaks to assembling furniture. Let us take care of the details, so you can relax and make the most of your time. With our reliable and efficient services, your home will be in top shape in no time.",
+                            Name = "General Handyman",
+                            UrlImage = "~/Images/Home/General Handyman.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Description = "Experience the luxury of a spotless home with our impeccable cleaning services. From meticulous dusting to thorough vacuuming, we take care of every detail to ensure your living space is fresh and inviting. Our dedicated team of professionals is committed to delivering a deep and comprehensive clean, leaving no corner untouched. Enjoy the convenience of a pristine home without the hassle. Let us transform your space into a sanctuary of cleanliness, providing you with the peace of mind and comfort you deserve.",
+                            Name = "Home Cleaning",
+                            UrlImage = "~/Images/Home/Home Cleaning.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Description = "Transform your living space with our expert interior painting services. Our skilled team is committed to adding a splash of color and vibrancy to your home. From meticulous preparation to flawless execution, we ensure a smooth and professional paint job for your walls, ceilings, and trim. Choose from our wide range of quality paints and finishes to suit your style and preferences. Experience the joy of a freshly painted interior that not only enhances the aesthetics but also adds a sense of newness to your home. Let us bring your vision to life with our top-notch interior painting services.",
+                            Name = "Interior Painting",
+                            UrlImage = "~/Images/Home/Interior Painting.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Description = "Streamline your move with our hassle-free home moving service. We handle all aspects of your relocation, from careful packing to efficient transportation and unpacking. Our experienced team ensures a smooth transition to your new home, prioritizing the safety and security of your belongings. Sit back and relax while we take care of the logistics, making your move a stress-free experience. Choose our reliable and professional home moving service for a seamless transition to your new living space.",
+                            Name = "Moving ",
+                            UrlImage = "~/Images/Home/Moving.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Description = "Experience worry-free plumbing solutions with our expert services. From repairs to installations, our skilled plumbers are ready to tackle any plumbing issue in your home. We prioritize efficiency and reliability to ensure that your water systems, pipes, and fixtures are in optimal condition. Trust us to address leaks, clogs, and any other plumbing concerns with precision. Enjoy the convenience of a well-functioning plumbing system that keeps your home running smoothly. Choose our dedicated plumbing services for professional, prompt, and effective solutions, leaving you with peace of mind in your living space.",
+                            Name = "Plumbing ",
+                            UrlImage = "~/Images/Home/Plumbing.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Description = "Upgrade your home with our smart solutions. From automated lighting to advanced security, we bring the latest technologies to your fingertips. Enjoy the convenience of a smarter, more efficient living space. Let us transform your home into a connected haven where innovation meets simplicity. Choose our smart home services for a modern, hassle-free lifestyle.",
+                            Name = "Smart Home",
+                            UrlImage = "~/Images/Home/Smart Home.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Description = "Simplify your entertainment setup with our TV mounting service. Our skilled professionals ensure a secure and aesthetically pleasing installation, bringing your viewing experience to new heights. Experience the sleek and modern look of a wall-mounted TV without the hassle. Trust us to handle the details, from selecting the right mounting bracket to securely attaching your TV. Choose our efficient TV mounting service for a clean and polished home entertainment setup, allowing you to enjoy your favorite shows and movies in style.",
+                            Name = "TV Mounting",
+                            UrlImage = "~/Images/Home/TV Mounting.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 10,
+                            Description = "Elevate your windows with our expert treatment services. Whether you prefer elegant curtains, stylish blinds, or functional shades, we provide customized solutions to enhance your space. Our skilled professionals ensure precise measurements and flawless installations for a polished and tailored look. Experience the perfect balance of privacy, natural light, and aesthetics with our window treatment services. Choose us for a seamless transformation that not only complements your decor but also adds a touch of sophistication to your living spaces",
+                            Name = "Window Treatments",
+                            UrlImage = "~/Images/Home/Window Treatments.png",
+                            serviceID = 1
+                        },
+                        new
+                        {
+                            ID = 11,
+                            Description = "Ease your caregiving journey with our dedicated support services. From respite care to emotional assistance, we're here for you. Tailored to your unique needs, our services provide the help you require as you care for your loved ones. Experience peace of mind and compassionate support with our caregiver services.",
+                            Name = "Caregiver support services",
+                            UrlImage = "~/Images/Health/Caregiver support services (1).png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 12,
+                            Description = "Improve your mobility with our durable medical equipment (DME) solutions. From wheelchairs to walking aids, we provide reliable devices tailored to your needs. Experience the convenience of quality equipment that enhances your daily life. Choose us for durable solutions that prioritize your well-being.",
+                            Name = "Durable medical equipment (DME)",
+                            UrlImage = "~/Images/Health/Durable medical equipment (DME).png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 13,
+                            Description = "Gain insights into your health with our concise home health assessments. Tailored to your needs, our assessments provide a quick and accurate overview within the comfort of your home. Choose us for efficient and personalized insights to support your well-being.",
+                            Name = "home health assessment",
+                            UrlImage = "~/Images/Health/home health assessment.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 14,
+                            Description = "Receive personalized care at home with our home health services. Our dedicated team of professionals brings medical assistance and support to your doorstep. Choose comfort and convenience for your well-being.",
+                            Name = "home health care",
+                            UrlImage = "~/Images/Health/home health care edit.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 15,
+                            Description = "Experience compassionate end-of-life care with our hospice services. We prioritize comfort and support for both patients and families during this sensitive time. Choose our empathetic care to enhance the quality of life in a peaceful environment.",
+                            Name = "Hospice care",
+                            UrlImage = "~/Images/Health/Hospice care.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 16,
+                            Description = "Simplify your health routine with our medication management services. We offer organized and personalized solutions to ensure you take the right medication at the right time. Trust us to streamline your medication schedule for a hassle-free and effective approach to your health. Choose our services for a simplified and efficient way to manage your medications.",
+                            Name = "Medication management",
+                            UrlImage = "~/Images/Health/Medication management.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 17,
+                            Description = "Boost your well-being with our tailored nutritional support. Our expert guidance helps you achieve your health goals through personalized plans. Choose us for practical tips and insights, making nutrition simple and effective for you.",
+                            Name = "Nutritional support services",
+                            UrlImage = "~/Images/Health/Nutritional support services.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 18,
+                            Description = "Receive compassionate palliative care at home. Our specialized services prioritize your comfort and quality of life. Choose dignified and personalized support for a peaceful and comforting experience.",
+                            Name = "Palliative care at home",
+                            UrlImage = "~/Images/Health/Palliative care at home (1).png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 19,
+                            Description = "Get personalized healing at home with our physical therapy services. Our expert therapists bring rehabilitation to your doorstep, focusing on your specific needs. Choose the convenience of at-home care for improved mobility and well-being.",
+                            Name = "Physical therapy at home",
+                            UrlImage = "~/Images/Health/Physical therapy at home.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 20,
+                            Description = "Experience rehab at home with our personalized services. Our experts bring tailored rehabilitation to your doorstep for enhanced well-being. Choose the convenience of at-home care for a focused approach to your recovery.",
+                            Name = "Rehabilitation services at home",
+                            UrlImage = "~/Images/Health/Rehabilitation services at home.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 21,
+                            Description = "Enhance your communication skills at home with our personalized speech therapy. Our expert therapists bring tailored sessions to you, focusing on your specific needs. Choose the convenience of at-home care for effective and comfortable progress.",
+                            Name = "Speech therapy at home",
+                            UrlImage = "~/Images/Health/Speech therapy at home.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 22,
+                            Description = "Experience remote healthcare with our telehealth services. Connect with professionals from the comfort of your space. Choose convenient, virtual care for effective and personalized support.",
+                            Name = "telehealth services",
+                            UrlImage = "~/Images/Health/telehealth services.png",
+                            serviceID = 2
+                        },
+                        new
+                        {
+                            ID = 23,
+                            Description = "Keep your home cozy with our swift HVAC repairs. We fix air conditioning and heating issues promptly, ensuring your comfort year-round. Choose us for efficient and reliable solutions to maintain your ideal indoor climate.",
+                            Name = "Air Conditioning and Heating Repairs ",
+                            UrlImage = "~/Images/Mechanical/Air Conditioning and Heating Repairs.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 24,
+                            Description = "Drive confidently with our swift brake repairs. Our skilled technicians prioritize your safety, delivering efficient solutions to keep your vehicle in top condition. Choose us for reliable brake repairs that ensure a smooth and secure driving experience.",
+                            Name = "Brake Repairs ",
+                            UrlImage = "~/Images/Mechanical/Brake Repairs.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 25,
+                            Description = "Pinpoint vehicle issues with our precise diagnostic services. Our skilled mechanics use advanced technology for efficient problem identification. Trust us for accurate insights, streamlining repairs and keeping your vehicle running smoothly.",
+                            Name = "Diagnostic Services ",
+                            UrlImage = "~/Images/Mechanical/Diagnostic Services.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 26,
+                            Description = "Address car electrical issues promptly with our skilled mechanics. Trust us for fast and reliable solutions to ensure your vehicle's electrical system is running smoothly. Choose expert repairs for your automotive electrical problems, bringing you peace of mind on the road.",
+                            Name = "Electrical Problems ",
+                            UrlImage = "~/Images/Mechanical/Electrical Problems.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 27,
+                            Description = "Resolve engine issues with our skilled mechanics for efficient and reliable solutions. Choose us for expert repairs to ensure optimal performance and a smoothly running engine.",
+                            Name = "Engine Trouble ",
+                            UrlImage = "~/Images/Mechanical/Engine Trouble.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 28,
+                            Description = "Fix fluid leaks with our expert solutions. Our skilled technicians swiftly identify and repair issues for a smoothly running vehicle. Choose us for prompt and precise resolution, ensuring your vehicle stays in top condition.",
+                            Name = "Fluid Leaks ",
+                            UrlImage = "~/Images/Mechanical/Fluid Leaks.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 29,
+                            Description = "Maintain your vehicle's health with our reliable routine maintenance. Our skilled technicians provide efficient checks for optimal performance. Choose hassle-free maintenance for peace of mind on the road. Trust us for expert service to keep your vehicle running smoothly.",
+                            Name = "Routine Maintenance ",
+                            UrlImage = "~/Images/Mechanical/Routine Maintenance.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 30,
+                            Description = "Ensure a smooth ride with our expert suspension and steering repairs. Our skilled technicians specialize in efficient solutions to keep your vehicle handling with precision. Choose us for reliable repairs that prioritize your safety and restore optimal driving performanc",
+                            Name = "Suspension and Steering Repairs ",
+                            UrlImage = "~/Images/Mechanical/Suspension and Steering Repairs.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 31,
+                            Description = "Keep your journey smooth with our expert tire services. Our skilled technicians offer efficient solutions for tire repairs, rotations, and replacements. Choose us for reliable and prompt tire services, ensuring your safety and the longevity of your tires.",
+                            Name = "Tire Services ",
+                            UrlImage = "~/Images/Mechanical/Tire Services.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 32,
+                            Description = "Resolve transmission concerns efficiently with our expert services. Our skilled technicians specialize in diagnosing and repairing transmission issues to keep your vehicle running smoothly. Choose us for reliable and prompt solutions, ensuring optimal performance and longevity for your transmission",
+                            Name = "Transmission Concerns ",
+                            UrlImage = "~/Images/Mechanical/Transmission Concerns.png",
+                            serviceID = 3
+                        },
+                        new
+                        {
+                            ID = 33,
+                            Description = "Count on us for prompt Emergency Electrical Services. Our skilled electricians are ready to address urgent electrical issues, ensuring the safety and functionality of your home or business. Trust us for reliable and efficient solutions to restore power and resolve electrical emergencies swiftly. Choose our Emergency Electrical Services for peace of mind during critical situations.",
+                            Name = "Emergency Electrical Services",
+                            UrlImage = "~/Images/Electrical/Emergency Electrical Services.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 34,
+                            Description = "Enhance energy efficiency with our expert solutions. Our professionals specialize in tailored strategies for cost-effective and sustainable results. Choose us for streamlined energy solutions that benefit your home or business.",
+                            Name = "Energy-Efficient Solutions",
+                            UrlImage = "~/Images/Electrical/Energy-Efficient Solutions.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 35,
+                            Description = "Ensure reliable power with our expert Generator Installation and Repair services. Our skilled technicians specialize in efficient installations and timely repairs to keep your generator ready for any power needs. Choose us for reliable solutions that prioritize seamless operation and backup power when you need it most.",
+                            Name = "Generator Installation and Repair",
+                            UrlImage = "~/Images/Electrical/Generator Installation and Repair.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 36,
+                            Description = "Experience seamless installations with our expert services. Our skilled professionals specialize in efficient setup to meet your specific needs. Choose us for reliable and hassle-free installation solutions tailored to enhance your systems and equipment.",
+                            Name = "Installation Services",
+                            UrlImage = "~/Images/Electrical/Installation Services.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 37,
+                            Description = "Brighten your outdoors with our expert Outdoor Lighting. Our skilled professionals ensure efficient installation and maintenance for enhanced aesthetics and security. Choose us for reliable solutions that illuminate your outdoor spaces with style.",
+                            Name = "Outdoor Lighting",
+                            UrlImage = "~/Images/Electrical/Outdoor Lighting copy.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 38,
+                            Description = "Elevate your power capacity with our Panel Upgrades. Our skilled electricians efficiently enhance your electrical system for modern demands. Choose us for reliable solutions that ensure a more robust and efficient power supply.",
+                            Name = "Panel Upgrades",
+                            UrlImage = "~/Images/Electrical/Panel Upgrades.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 39,
+                            Description = "Secure your space with our expert Security System Wiring services. Our skilled technicians specialize in efficient and discreet wiring installations to ensure the seamless operation of your security systems. Choose us for reliable solutions that prioritize the safety and protection of your home or business. Enhance your security infrastructure with our expert Security System Wiring services.",
+                            Name = "Security System Wiring",
+                            UrlImage = "~/Images/Electrical/Security System Wiring.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 40,
+                            Description = "\r\nUpgrade to a smarter home with our expert Smart Home Integration. Our skilled technicians ensure seamless installations for enhanced convenience and connectivity. Choose us for reliable solutions that bring intelligence to every corner of your living space.",
+                            Name = "Smart Home Electrical Integration",
+                            UrlImage = "~/Images/Electrical/Smart Home Electrical Integration.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 41,
+                            Description = "Ensure efficient electrical connectivity with our expert Wiring and Rewiring services. Our skilled technicians specialize in reliable installations and rewiring to meet the electrical needs of your home or business. Choose us for seamless solutions that prioritize safety, efficiency, and optimal functionality. Trust our experts to handle your wiring and rewiring needs with precision and care.",
+                            Name = "Wiring and Rewiring",
+                            UrlImage = "~/Images/Electrical/Wiring and Rewiring.png",
+                            serviceID = 4
+                        },
+                        new
+                        {
+                            ID = 42,
+                            Description = "Keep your electronic devices powered with our expert Battery Replacement services. Our skilled technicians specialize in swift and reliable battery replacements for various gadgets and devices. Choose us for hassle-free solutions that ensure your electronics stay powered and functional. Trust our experts to provide timely and efficient battery replacements to keep your electronic devices running smoothly.",
+                            Name = "Battery Replacements",
+                            UrlImage = "~/Images/Electronic/Battery Replacements.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 43,
+                            Description = "Resolve device issues with our expert Troubleshooting services. Our skilled technicians swiftly identify and fix problems with various devices. Choose us for reliable solutions to ensure optimal device performance. Trust our experts for efficient troubleshooting that keeps your gadgets running smoothly.",
+                            Name = "Device Troubleshooting",
+                            UrlImage = "~/Images/Electronic/Device Troubleshooting.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 44,
+                            Description = "Elevate your devices with our expert Upgrade services. Our skilled technicians specialize in enhancing the performance and features of your gadgets. Choose us for reliable and efficient upgrades that bring your devices to the next level. Trust our experts to provide seamless and customized solutions to optimize the functionality of your electronic equipment.",
+                            Name = "Device Upgrades",
+                            UrlImage = "~/Images/Electronic/Device Upgrades.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 45,
+                            Description = "Revive your gaming experience with our expert Gaming Console Repair services. Our skilled technicians specialize in diagnosing and fixing issues to get your console back in action. Choose us for reliable solutions that prioritize a swift and efficient repair process. Trust our experts to provide effective Gaming Console Repairs, ensuring you can resume your gaming adventures without disruption.",
+                            Name = "Gaming Console Repairs",
+                            UrlImage = "~/Images/Electronic/Gaming Console Repairs.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 46,
+                            Description = "Tackle network connectivity issues with our expert solutions. Our skilled technicians specialize in diagnosing and resolving problems to ensure seamless connectivity. Choose us for reliable solutions that prioritize a swift and efficient resolution to your network issues. Trust our experts to provide effective troubleshooting, ensuring your devices stay connected and operational.",
+                            Name = "Network Connectivity Issues",
+                            UrlImage = "~/Images/Electronic/Network Connectivity Issues.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 47,
+                            Description = "Revitalize your screens with our expert Screen Repair services. Our skilled technicians efficiently address screen issues on various devices. Choose us for reliable solutions that prioritize swift and precise repairs. Trust our experts to bring your screens back to life for an enhanced viewing experience.",
+                            Name = "Screen Repairs",
+                            UrlImage = "~/Images/Electronic/Screen Repairs.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 48,
+                            Description = "Resolve software glitches with our expert solutions. Our skilled technicians specialize in identifying and fixing software issues on various devices. Choose us for reliable solutions that prioritize swift and efficient resolution to software glitches. Trust our experts to provide effective troubleshooting, ensuring your devices run smoothly and efficiently.",
+                            Name = "Software Glitches",
+                            UrlImage = "~/Images/Electronic/Software Glitches.png",
+                            serviceID = 5
+                        },
+                        new
+                        {
+                            ID = 49,
+                            Description = "Ensure device security with our Virus and Malware Removal. Our skilled technicians swiftly eliminate threats for safe and efficient operation. Choose us for reliable solutions that prioritize swift removal of viruses and malware. Trust our experts for effective security measures to keep your devices safe.",
+                            Name = "Virus and Malware Removal",
+                            UrlImage = "~/Images/Electronic/Virus and Malware Removal.png",
+                            serviceID = 5
+                        });
                 });
 
             modelBuilder.Entity("ServiceProvider.Models.Subscription", b =>

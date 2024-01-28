@@ -1,17 +1,27 @@
 ﻿@model List<FeedbackForWeb>
 
+    <head>
+        <style>
+        .page-header {
+            background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url('../Images/About6.jpg') center center no-repeat;
+            background-size: cover;
+            height: 40vh;
+        }
+        </style>
+    
+    </head>
 
 <!-- Page Header Start -->
 <div class="container-fluid page-header py-5 mb-5">
     <div class="container py-5">
         <h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
+        @* <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
                 <li class="breadcrumb-item text-white active" aria-current="page">About</li>
             </ol>
-        </nav>
+        </nav> *@
     </div>
 </div>
 <!-- Page Header End -->
@@ -65,7 +75,7 @@
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute img-fluid w-100 h-100" src="img/about.jpg" style="object-fit: cover;" alt="">
+                    <img class="position-absolute img-fluid w-100 h-100" src="~/Images/About3.jpg" style="object-fit: cover;" alt="">
                 </div>
             </div>
             <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
@@ -73,7 +83,7 @@
                     <div class="section-title text-start">
                         <h1 class="display-5 mb-4">About Us</h1>
                     </div>
-                    <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                    <p class="mb-4 pb-2">Discover <b>Solveit</b> – your solution to hassle-free services. Connecting customers with skilled providers, we simplify your search for top-notch assistance. From home services to electronics, we've got you covered. With a few clicks, request a provider and experience service excellence. Solveit – where solutions meet simplicity.</p>
                     <div class="row g-4 mb-4 pb-2">
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="d-flex align-items-center">
@@ -98,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary py-3 px-5">Explore More</a>
+                    <a asp-action="AllServiceItems" class="btn btn-primary py-3 px-5">All Services</a>
                 </div>
             </div>
         </div>
@@ -125,7 +135,9 @@
         </div>
     </div>
 </div>
-<!-- Testimonial End -->
+
+
+
 
 
 
@@ -144,3 +156,5 @@
         </div>
     </div>
 </div>
+
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>   
